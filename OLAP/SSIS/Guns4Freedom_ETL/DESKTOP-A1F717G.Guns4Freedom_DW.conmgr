@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DESKTOP-A1F717G.Guns4Freedom_DW"
+  DTS:DTSID="{EBB30EEF-2CB7-421A-B692-E7373E162488}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=DESKTOP-A1F717G;Initial Catalog=Guns4Freedom_DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-OneTime-{EBB30EEF-2CB7-421A-B692-E7373E162488}DESKTOP-A1F717G.Guns4Freedom_DW;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

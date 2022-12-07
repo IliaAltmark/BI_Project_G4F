@@ -1,0 +1,1190 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/17/2022 11:52:46 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-A1F717G"
+  DTS:CreatorName="DESKTOP-A1F717G\kaint"
+  DTS:DTSID="{DA47AB92-8581-4F6E-BA55-6B6200CE42EE}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.694.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="OneTime"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{154D5A17-5F67-42A4-A750-222A1EABC59A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-A1F717G.Guns4Freedom_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EBB30EEF-2CB7-421A-B692-E7373E162488}"
+      DTS:ObjectName="DESKTOP-A1F717G.Guns4Freedom_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-A1F717G;Initial Catalog=Guns4Freedom_DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-OneTime-{EBB30EEF-2CB7-421A-B692-E7373E162488}DESKTOP-A1F717G.Guns4Freedom_DW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Creating Dims"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{129A7685-3A07-49C9-A463-8CA669CE9CAA}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Creating Dims">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Creating Dims\DimCustomers"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{134AC2AD-8E6C-465B-A586-6861531FF1F1}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DimCustomers"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Creating Dims\DimCustomers\CUSTOMERS"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="CUSTOMERS"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[CUSTOMERS]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Connections[OleDbConnection]"
+                      connectionManagerID="{2D078CBC-F232-4D8C-B188-B11E278AE6C9}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DESKTOP-A1F717G.Guns4Freedom_ERP]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[CUSTNAME]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[CUSTNAME]"
+                          length="60"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[CUSTNAME]"
+                          name="CUSTNAME"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[CUST]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[CUST]"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[CUST]"
+                          name="CUST"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[ADDRESS]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[ADDRESS]"
+                          length="80"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[ADDRESS]"
+                          name="ADDRESS"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[PHONE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[PHONE]"
+                          length="20"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[PHONE]"
+                          name="PHONE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[EMAIL]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[EMAIL]"
+                          length="100"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[EMAIL]"
+                          name="EMAIL"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[STATEID]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[STATEID]"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[STATEID]"
+                          name="STATEID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[CUSTNAME]"
+                          dataType="wstr"
+                          length="60"
+                          name="CUSTNAME" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[CUST]"
+                          dataType="i8"
+                          name="CUST" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[ADDRESS]"
+                          dataType="wstr"
+                          length="80"
+                          name="ADDRESS" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[PHONE]"
+                          dataType="wstr"
+                          length="20"
+                          name="PHONE" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[CURRENCY]"
+                          dataType="i8"
+                          name="CURRENCY" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[CUSTDES]"
+                          dataType="wstr"
+                          length="48"
+                          name="CUSTDES" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[VATFLAG]"
+                          dataType="wstr"
+                          length="1"
+                          name="VATFLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[PAY]"
+                          dataType="i8"
+                          name="PAY" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[FAX]"
+                          dataType="wstr"
+                          length="20"
+                          name="FAX" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[ZIP]"
+                          dataType="wstr"
+                          length="10"
+                          name="ZIP" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[MCUST]"
+                          dataType="i8"
+                          name="MCUST" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[ZONE]"
+                          dataType="i8"
+                          name="ZONE" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[STATE]"
+                          dataType="wstr"
+                          length="40"
+                          name="STATE" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[CTYPE]"
+                          dataType="i8"
+                          name="CTYPE" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[MONTHLY]"
+                          dataType="wstr"
+                          length="1"
+                          name="MONTHLY" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[BOOKNUM]"
+                          dataType="wstr"
+                          length="7"
+                          name="BOOKNUM" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[PAYCUST]"
+                          dataType="i8"
+                          name="PAYCUST" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[FNCPATTERN]"
+                          dataType="i8"
+                          name="FNCPATTERN" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[STATUSFLAG]"
+                          dataType="wstr"
+                          length="1"
+                          name="STATUSFLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[SELLFLAG]"
+                          dataType="wstr"
+                          length="1"
+                          name="SELLFLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[ISSUEFLAG]"
+                          dataType="wstr"
+                          length="1"
+                          name="ISSUEFLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[PRDFLAG]"
+                          dataType="wstr"
+                          length="1"
+                          name="PRDFLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[ACCOUNT]"
+                          dataType="i8"
+                          name="ACCOUNT" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[DISTRLINE]"
+                          dataType="i8"
+                          name="DISTRLINE" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[SHIPTYPE]"
+                          dataType="i8"
+                          name="SHIPTYPE" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[DSTFLAG]"
+                          dataType="wstr"
+                          length="1"
+                          name="DSTFLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[LABFLAG]"
+                          dataType="wstr"
+                          length="1"
+                          name="LABFLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[AGENT]"
+                          dataType="i8"
+                          name="AGENT" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[IVTYPE]"
+                          dataType="wstr"
+                          length="1"
+                          name="IVTYPE" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[COUNTRY]"
+                          dataType="i8"
+                          name="COUNTRY" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[PARTFLAG]"
+                          dataType="wstr"
+                          length="1"
+                          name="PARTFLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[SECONDLANGTEXT]"
+                          dataType="wstr"
+                          length="1"
+                          name="SECONDLANGTEXT" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[FNCPATTERN2]"
+                          dataType="i8"
+                          name="FNCPATTERN2" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[IVTOPAYCUST]"
+                          dataType="wstr"
+                          length="1"
+                          name="IVTOPAYCUST" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[TAX]"
+                          dataType="i8"
+                          name="TAX" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[ROUNDPRICE]"
+                          dataType="wstr"
+                          length="1"
+                          name="ROUNDPRICE" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[INTEREST]"
+                          dataType="i8"
+                          name="INTEREST" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[RESTRICTED]"
+                          dataType="wstr"
+                          length="1"
+                          name="RESTRICTED" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[RESTRICTDATE]"
+                          dataType="i8"
+                          name="RESTRICTDATE" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[NSFLAG]"
+                          dataType="wstr"
+                          length="1"
+                          name="NSFLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[COMMISSION]"
+                          dataType="r8"
+                          name="COMMISSION" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[LINKDATE]"
+                          dataType="wstr"
+                          length="1"
+                          name="LINKDATE" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[WTAXNUM]"
+                          dataType="wstr"
+                          length="16"
+                          name="WTAXNUM" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[KM]"
+                          dataType="i8"
+                          name="KM" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[ROADTIME]"
+                          dataType="r8"
+                          name="ROADTIME" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[PURTAXDATE]"
+                          dataType="i8"
+                          name="PURTAXDATE" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[INTERESTFLAG]"
+                          dataType="wstr"
+                          length="1"
+                          name="INTERESTFLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[VATNUM]"
+                          dataType="wstr"
+                          length="16"
+                          name="VATNUM" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[CTYPE2]"
+                          dataType="i8"
+                          name="CTYPE2" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[IMPTERM]"
+                          dataType="i8"
+                          name="IMPTERM" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[BONUSFLAG]"
+                          dataType="wstr"
+                          length="1"
+                          name="BONUSFLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[BRANCH]"
+                          dataType="i8"
+                          name="BRANCH" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[LINKOPTIONS]"
+                          dataType="wstr"
+                          length="1"
+                          name="LINKOPTIONS" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[UNLOADTIME]"
+                          dataType="i8"
+                          name="UNLOADTIME" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[DISTRORDER]"
+                          dataType="i8"
+                          name="DISTRORDER" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[CONFIDENTIAL]"
+                          dataType="wstr"
+                          length="1"
+                          name="CONFIDENTIAL" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[CASH]"
+                          dataType="i8"
+                          name="CASH" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[CUSTSTAT]"
+                          dataType="i8"
+                          name="CUSTSTAT" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[OWNER]"
+                          dataType="i8"
+                          name="OWNER" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[EXTFILEFLAG]"
+                          dataType="wstr"
+                          length="1"
+                          name="EXTFILEFLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[STATEID]"
+                          dataType="i8"
+                          name="STATEID" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[STATEA]"
+                          dataType="wstr"
+                          length="40"
+                          name="STATEA" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[FORECAST]"
+                          dataType="wstr"
+                          length="1"
+                          name="FORECAST" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[PAYMENTDAYS]"
+                          dataType="i8"
+                          name="PAYMENTDAYS" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[CREDITDAYS]"
+                          dataType="i8"
+                          name="CREDITDAYS" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[YEARINCOME]"
+                          dataType="r8"
+                          name="YEARINCOME" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[CREATEDDATE]"
+                          dataType="i8"
+                          name="CREATEDDATE" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[TERRITORY]"
+                          dataType="i8"
+                          name="TERRITORY" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[SALEPAYFLAG]"
+                          dataType="wstr"
+                          length="1"
+                          name="SALEPAYFLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[TIVCONTACT]"
+                          dataType="i8"
+                          name="TIVCONTACT" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[INTERNAL]"
+                          dataType="wstr"
+                          length="1"
+                          name="INTERNAL" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[EDOCUMENTS]"
+                          dataType="wstr"
+                          length="1"
+                          name="EDOCUMENTS" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[OBLIGOCUST]"
+                          dataType="i8"
+                          name="OBLIGOCUST" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[NONPROFITORG]"
+                          dataType="wstr"
+                          length="1"
+                          name="NONPROFITORG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[UNTILDAY]"
+                          dataType="i8"
+                          name="UNTILDAY" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[WAVESTRATEGY]"
+                          dataType="i8"
+                          name="WAVESTRATEGY" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[VATTYPE]"
+                          dataType="wstr"
+                          length="1"
+                          name="VATTYPE" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[WTAXTBL]"
+                          dataType="i8"
+                          name="WTAXTBL" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[WTAXTBL2]"
+                          dataType="i8"
+                          name="WTAXTBL2" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[WTAXTBL3]"
+                          dataType="i8"
+                          name="WTAXTBL3" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[ADDRESS2]"
+                          dataType="wstr"
+                          length="80"
+                          name="ADDRESS2" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[ADDRESS3]"
+                          dataType="wstr"
+                          length="80"
+                          name="ADDRESS3" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[AUTOSHPFLAG]"
+                          dataType="wstr"
+                          length="1"
+                          name="AUTOSHPFLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[CUSTCAMPAIGN]"
+                          dataType="wstr"
+                          length="1"
+                          name="CUSTCAMPAIGN" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[AGENT2]"
+                          dataType="i8"
+                          name="AGENT2" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[GPSX]"
+                          dataType="wstr"
+                          length="20"
+                          name="GPSX" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[GPSY]"
+                          dataType="wstr"
+                          length="20"
+                          name="GPSY" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[PACKGROUPTYPE]"
+                          dataType="wstr"
+                          length="1"
+                          name="PACKGROUPTYPE" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[PICKSTG]"
+                          dataType="i8"
+                          name="PICKSTG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[CUSTDESLONG]"
+                          dataType="wstr"
+                          length="80"
+                          name="CUSTDESLONG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[PCUST]"
+                          dataType="i8"
+                          name="PCUST" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[ADDTAXFLAG]"
+                          dataType="wstr"
+                          length="1"
+                          name="ADDTAXFLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[COMPSTATUS]"
+                          dataType="wstr"
+                          length="1"
+                          name="COMPSTATUS" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[WTAXNUMEXPL]"
+                          dataType="wstr"
+                          length="1"
+                          name="WTAXNUMEXPL" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[STATUSDATE]"
+                          dataType="i8"
+                          name="STATUSDATE" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[COMPETITORFLAG]"
+                          dataType="wstr"
+                          length="1"
+                          name="COMPETITORFLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[MINEXPDAYS]"
+                          dataType="i8"
+                          name="MINEXPDAYS" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[PURTAX]"
+                          dataType="i8"
+                          name="PURTAX" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[IVPAYFLAG]"
+                          dataType="wstr"
+                          length="1"
+                          name="IVPAYFLAG" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[INCACCOUNT]"
+                          dataType="i8"
+                          name="INCACCOUNT" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].ExternalColumns[EMAIL]"
+                          dataType="wstr"
+                          length="100"
+                          name="EMAIL" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Error Output].Columns[CUSTNAME]"
+                          dataType="wstr"
+                          length="60"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Error Output].Columns[CUSTNAME]"
+                          name="CUSTNAME" />
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Error Output].Columns[CUST]"
+                          dataType="i8"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Error Output].Columns[CUST]"
+                          name="CUST" />
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Error Output].Columns[ADDRESS]"
+                          dataType="wstr"
+                          length="80"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Error Output].Columns[ADDRESS]"
+                          name="ADDRESS" />
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Error Output].Columns[PHONE]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Error Output].Columns[PHONE]"
+                          name="PHONE" />
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Error Output].Columns[EMAIL]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Error Output].Columns[EMAIL]"
+                          name="EMAIL" />
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Error Output].Columns[STATEID]"
+                          dataType="i8"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Error Output].Columns[STATEID]"
+                          name="STATEID" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Creating Dims\DimCustomers\DimCustomers"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DimCustomers"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DimCustomers]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Creating Dims\DimCustomers\DimCustomers.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-A1F717G.Guns4Freedom_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-A1F717G.Guns4Freedom_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].Columns[CUSTNAME]"
+                          cachedDataType="wstr"
+                          cachedLength="60"
+                          cachedName="CUSTNAME"
+                          externalMetadataColumnId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].ExternalColumns[CUSTNAME]"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[CUSTNAME]" />
+                        <inputColumn
+                          refId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].Columns[CUST]"
+                          cachedDataType="i8"
+                          cachedName="CUST"
+                          externalMetadataColumnId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].ExternalColumns[CUST]"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[CUST]" />
+                        <inputColumn
+                          refId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].Columns[ADDRESS]"
+                          cachedDataType="wstr"
+                          cachedLength="80"
+                          cachedName="ADDRESS"
+                          externalMetadataColumnId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].ExternalColumns[ADDRESS]"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[ADDRESS]" />
+                        <inputColumn
+                          refId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].Columns[PHONE]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="PHONE"
+                          externalMetadataColumnId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].ExternalColumns[PHONE]"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[PHONE]" />
+                        <inputColumn
+                          refId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].Columns[EMAIL]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="EMAIL"
+                          externalMetadataColumnId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].ExternalColumns[EMAIL]"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[EMAIL]" />
+                        <inputColumn
+                          refId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].Columns[STATENAME]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="STATENAME"
+                          externalMetadataColumnId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].ExternalColumns[STATENAME]"
+                          lineageId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Outputs[Lookup Match Output].Columns[STATENAME]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].ExternalColumns[CustomerKey]"
+                          dataType="i4"
+                          name="CustomerKey" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].ExternalColumns[CUST]"
+                          dataType="i4"
+                          name="CUST" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].ExternalColumns[STATENAME]"
+                          dataType="wstr"
+                          length="50"
+                          name="STATENAME" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].ExternalColumns[CUSTNAME]"
+                          dataType="wstr"
+                          length="60"
+                          name="CUSTNAME" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].ExternalColumns[ADDRESS]"
+                          dataType="wstr"
+                          length="80"
+                          name="ADDRESS" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].ExternalColumns[EMAIL]"
+                          dataType="wstr"
+                          length="100"
+                          name="EMAIL" />
+                        <externalMetadataColumn
+                          refId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input].ExternalColumns[PHONE]"
+                          dataType="wstr"
+                          length="50"
+                          name="PHONE" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Creating Dims\DimCustomers\DimCustomers.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\DimCustomers.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Creating Dims\DimCustomers\DimCustomers.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\DimCustomers.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Creating Dims\DimCustomers\DimCustomers.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Creating Dims\DimCustomers\Lookup - STATENAME"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup - STATENAME"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[STATES]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[STATES]) [refTable]
+where [refTable].[STATEID] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="STATEID" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STATENAME" dataType="DT_WSTR" length="40" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="COUNTRY" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TAX" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="STATECODE" dataType="DT_WSTR" length="3" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ACCOUNT" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[STATEID]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Connections[OleDbConnection]"
+                      connectionManagerID="{2D078CBC-F232-4D8C-B188-B11E278AE6C9}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DESKTOP-A1F717G.Guns4Freedom_ERP]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Inputs[Lookup Input].Columns[STATEID]"
+                          cachedDataType="i8"
+                          cachedName="STATEID"
+                          lineageId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output].Columns[STATEID]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">STATEID</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Outputs[Lookup Match Output].Columns[STATENAME]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Copy Column"
+                          length="40"
+                          lineageId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Outputs[Lookup Match Output].Columns[STATENAME]"
+                          name="STATENAME"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">STATENAME</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Creating Dims\DimCustomers.Paths[Lookup Match Output]"
+                  endId="Package\Creating Dims\DimCustomers\DimCustomers.Inputs[OLE DB Destination Input]"
+                  name="Lookup Match Output"
+                  startId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\Creating Dims\DimCustomers.Paths[OLE DB Source Output]"
+                  endId="Package\Creating Dims\DimCustomers\Lookup - STATENAME.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Creating Dims\DimCustomers\CUSTOMERS.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\Creating Dims\DimCustomers"
+          TopLeft="39.6571459711816,13.9294136093562" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="240,108"
+          Size="240,151.2"
+          Id="Package\Creating Dims"
+          TopLeft="143.571431016435,74.1764716285323" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Creating Dims\DimCustomers">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="181.6,41.6"
+          Id="Package\Creating Dims\DimCustomers\Lookup - STATENAME"
+          TopLeft="293.57143357092,42.0588241192709" />
+        <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\Creating Dims\DimCustomers\DimCustomers"
+          TopLeft="593.57143867989,39.7647064400379" />
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\Creating Dims\DimCustomers\CUSTOMERS"
+          TopLeft="42.8571435869957,38.2352946538826" />
+        <EdgeLayout
+          Id="Package\Creating Dims\DimCustomers.Paths[OLE DB Source Output]"
+          TopLeft="181.257143586996,60.9470593865768">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="112.314289983925,0"
+              Start="0,0"
+              End="104.814289983925,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="104.814289983925,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Creating Dims\DimCustomers.Paths[Lookup Match Output]"
+          TopLeft="475.17143357092,61.7117652796544">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="118.40000510897,0"
+              Start="0,0"
+              End="110.90000510897,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="110.90000510897,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="7.25861583573485,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Creating Dims\DimCustomers\Lookup - STATENAME">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[STATES]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Creating Dims\DimCustomers\DimCustomers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Creating Dims\DimCustomers\CUSTOMERS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
